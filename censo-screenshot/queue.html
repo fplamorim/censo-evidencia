@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<title>Censo · Fila de capturas</title>
+<style>
+  body { font-family: Garamond, Georgia, serif; max-width: 760px; margin: 24px auto; padding: 0 16px; background: #f7f9fc; color: #222; }
+  h1 { font-size: 20px; color: #011657; }
+  textarea { width: 100%; height: 220px; font: 12px/1.5 monospace; border: 1px solid #b8c4d8; border-radius: 5px; padding: 8px; box-sizing: border-box; }
+  button { padding: 10px 18px; font-size: 14px; font-weight: bold; color: #fff; background: #011657; border: 0; border-radius: 5px; cursor: pointer; margin-right: 8px; }
+  button:disabled { background: #8a94a8; }
+  #stop { background: #8B0000; }
+  #prog { margin: 14px 0; font-size: 14px; color: #365F91; min-height: 22px; }
+  #log { font: 11.5px/1.6 monospace; background: #fff; border: 1px solid #dde4ef; border-radius: 5px; padding: 10px; height: 260px; overflow-y: auto; white-space: pre-wrap; }
+  .ok { color: #1a7a2e; } .err { color: #8B0000; }
+  small { color: #666; display: block; margin: 10px 0; }
+</style>
+</head>
+<body>
+  <h1>Fila de capturas · uma linha por item: <code>ID | URL</code></h1>
+  <textarea id="lista" placeholder="ACT-2021-10-22 | https://www.fmprc.gov.cn/eng/...&#10;ACT-2021-12-06 | https://www.fmprc.gov.cn/eng/..."></textarea>
+  <small>Regras durante a fila: não mexas no separador de trabalho nem o feches; podes usar outro programa, mas o Chrome tem de ficar aberto. Na primeira gravação o Chrome pode pedir «permitir várias transferências»: permite. Cada item gera PDF + TXT em Transferências/evidencia_censo/ e é acrescentado ao manifesto acumulado. No fim sai um CSV só com esta fila (FILA_manifesto_…csv, com hashes SHA-256 e erros) e o relatório TXT. Pausa de cortesia de 2 s entre páginas.</small>
+  <button id="go">Processar fila</button>
+  <button id="stop" disabled>Parar</button>
+  <div id="prog"></div>
+  <div id="log"></div>
+  <script src="jspdf.umd.min.js"></script>
+  <script src="common.js"></script>
+  <script src="queue.js"></script>
+</body>
+</html>

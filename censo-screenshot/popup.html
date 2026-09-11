@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: Garamond, Georgia, serif; width: 330px; padding: 14px; background: #f7f9fc; }
+  h1 { font-size: 15px; color: #011657; margin: 0 0 10px; }
+  label { font-size: 12px; color: #333; display: block; margin-bottom: 4px; }
+  input { width: 100%; box-sizing: border-box; padding: 6px; font-size: 14px; margin-bottom: 10px;
+          border: 1px solid #b8c4d8; border-radius: 4px; }
+  button { width: 100%; padding: 9px; font-size: 14px; font-weight: bold; color: #fff;
+           background: #011657; border: 0; border-radius: 5px; cursor: pointer; }
+  button:disabled { background: #8a94a8; }
+  .sec { background: #365F91; margin-top: 8px; }
+  .row { display: flex; gap: 6px; margin-top: 8px; }
+  .row button { font-size: 12px; padding: 7px; }
+  #clear { background: #8B0000; }
+  #st { font-size: 12px; margin-top: 10px; color: #365F91; min-height: 30px; }
+  .ok { color: #1a7a2e; } .err { color: #8B0000; }
+  small { color: #666; font-size: 10.5px; display: block; margin-top: 8px; }
+  #cnt { font-size: 11px; color: #666; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <h1>Evidência do censo · página → PDF + TXT</h1>
+  <label for="rid">ID do registo (ex.: F1-004; vazio = AVULSO)</label>
+  <input id="rid" placeholder="F1-004" autofocus>
+  <button id="go">Capturar página inteira → PDF + TXT</button>
+  <div id="st"></div>
+  <button id="fila" class="sec">Abrir modo fila (lote)</button>
+  <div class="row">
+    <button id="export" class="sec">Exportar manifesto CSV</button>
+    <button id="clear">Limpar manifesto</button>
+  </div>
+  <div id="cnt"></div>
+  <small>Idealizado e desenvolvido por Fernando Amorim com Claude Cowork · Fable 5.1 · MIT.<br>A página desliza sozinha durante a captura (é normal). Sai em Transferências/evidencia_censo/: PDF com rodapé APA e ID em todas as páginas, e TXT com metadados, hash SHA-256 do PDF, texto integral e ligações. Cada captura é acrescentada ao manifesto (CSV com hashes dos dois ficheiros). Mantém este popup aberto até ao «concluído».</small>
+  <script src="jspdf.umd.min.js"></script>
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

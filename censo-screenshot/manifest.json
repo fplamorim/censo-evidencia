@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Censo · Evidência (screenshot completo → PDF + TXT + manifesto)",
+  "version": "1.5.0",
+  "description": "Captura a página inteira do separador ativo e gera PDF com rodapé APA (URL, data-hora, ID) em todas as páginas, sidecar TXT com metadados, texto e ligações, hashes SHA-256 e manifesto CSV. Evidência para corpora de análise de conteúdo. Não comunica com nada. Idealizado e desenvolvido por Fernando Amorim (ORCID 0000-0003-1646-5366) com Claude Cowork · Claude Fable 5.1.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Capturar página como evidência (PDF + TXT)"
+  },
+  "icons": {},
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "author": "Fernando Paulo Lopes Amorim",
+  "homepage_url": "https://github.com/fplamorim/censo-evidencia"
+}

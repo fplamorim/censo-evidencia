@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software in research, please cite it as below."
+title: "Censo · Evidência: full-page PDF, text sidecar and hashed manifest for content-analysis corpora (Chrome extension)"
+type: software
+version: 1.5.0
+date-released: 2026-09-11
+license: MIT
+repository-code: https://github.com/fplamorim/censo-evidencia
+url: https://fernandoamorim.com
+authors:
+  - family-names: Amorim
+    given-names: Fernando Paulo Lopes
+    orcid: https://orcid.org/0000-0003-1646-5366
+    affiliation: "CICANT / MeLCi Lab, Universidade Lusófona, Portugal"
+abstract: >-
+  Local Chrome extension that captures a web page as auditable evidence for
+  content-, framing- or discourse-analysis corpora: a full-page A4 PDF with an
+  APA retrieval footer (date-time, URL, record ID) on every page, a TXT sidecar
+  with page metadata, full text and links, SHA-256 hashes of both files, and a
+  CSV manifest of the corpus. Developed with Claude Cowork (Claude Fable 5.1,
+  Anthropic). No network communication.
+keywords:
+  - content analysis
+  - corpus
+  - evidence
+  - reproducibility
+  - political communication
+  - web archiving

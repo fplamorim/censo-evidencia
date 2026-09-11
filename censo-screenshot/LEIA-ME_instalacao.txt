@@ -1,0 +1,52 @@
+EXTENSÃO «Censo · Evidência» v1.5 — instalação (1 minuto)
+
+1. Descompacta esta pasta para um local permanente (ex.: Documentos/extensoes/censo-screenshot).
+   Se já tinhas a v1.4 nessa pasta, substitui os ficheiros todos (o jspdf é o mesmo).
+2. No Chrome: chrome://extensions → liga «Modo de programador» (canto superior direito).
+3. «Carregar expandida» → escolhe a pasta censo-screenshot. Se já estava carregada, clica no
+   ícone de «recarregar» da extensão para apanhar a v1.5 (pede a permissão nova «storage»,
+   que é só para guardar o manifesto localmente).
+4. Afixa a extensão na barra (ícone de puzzle → pin).
+
+USO, por item incluído no censo:
+1. Abre a página no separador ativo.
+2. Clica na extensão, escreve o ID do registo (ex.: F1-004) e «Capturar».
+3. Saem dois ficheiros em Transferências/evidencia_censo/:
+   - F1-004_AAAA-MM-DD_HHhMM.pdf  — página inteira, rodapé APA (Retrieved ... from URL),
+     ID e n.º de página em TODAS as páginas.
+   - F1-004_AAAA-MM-DD_HHhMM.txt  — cabeçalho com metadados (título, data de publicação,
+     autor, canonical, idioma), nome e hash SHA-256 do PDF, n.º de páginas; depois
+     ===== MAIN TEXT ===== (só o corpo do artigo, quando identificável),
+     ===== PAGE TEXT ===== (texto integral da página) e ===== LINKS =====.
+     Serve para importar o conteúdo em qualquer ferramenta sem OCR do PDF.
+4. Cada captura é acrescentada ao MANIFESTO acumulado (guardado na própria extensão).
+   Botão «Exportar manifesto CSV» → MANIFESTO_censo_AAAA-MM-DD_HHhMM.csv com:
+   record_id, url, canonical_url, title, og_title, site, published, author, lang,
+   retrieved_iso, retrieved_human, pages, pdf_file, txt_file, sha256_pdf, sha256_txt, status, error.
+   «Limpar manifesto» apaga só a lista acumulada (não toca nos PDF/TXT).
+5. Move os PDF/TXT para: TESE (1)/05_PUBLICACOES/artigo_southwashing/03_CORPUS/evidencia/
+   (é daí que o Claude os lê e cruza com o corpus_registo.csv).
+
+MODO FILA (lote): cola linhas «ID | URL». No fim grava FILA_manifesto_….csv (só essa fila,
+com hashes e erros) e FILA_relatorio_….txt, e acrescenta ao manifesto acumulado.
+
+PORQUÊ OS HASHES
+- O hash SHA-256 do PDF vai dentro do TXT; o hash do TXT e do PDF vão no CSV.
+  O TXT não pode conter o seu próprio hash (mudaria ao escrevê-lo), por isso está só no CSV.
+- Qualquer alteração posterior a um ficheiro muda o hash: é a prova de integridade do corpus.
+
+SCRIPT manifesto.py (fora da pasta da extensão)
+- python manifesto.py <pasta_evidencia>
+  Reconstrói o manifesto a partir dos TXT em disco, recalcula os hashes e assinala
+  PDF em falta ou alterado → manifesto_verificado.csv. Sidecars da v1.4 aparecem como SEM_CABECALHO.
+- python manifesto.py <pasta_evidencia> --verify MANIFESTO_censo_….csv
+  Compara os ficheiros atuais com um manifesto anterior (da extensão ou do script).
+
+NOTAS
+- Durante a captura aparece uma barra amarela «a ser depurado»: é o mecanismo de captura
+  de página inteira do próprio Chrome; desaparece no fim.
+- Páginas muito longas são limitadas a 30.000 px de altura (chega e sobra para o MNE).
+- A extensão não é publicada, não comunica com nada, não recolhe nada. Deliberadamente
+  NÃO pede arquivo na Wayback Machine: isso obrigaria a comunicar com um servidor externo.
+  Se quiseres cópia externa, submete o URL manualmente em web.archive.org/save.
+- Sidecars antigos (v1.4) continuam válidos como prova; só não têm hash nem metadados.
