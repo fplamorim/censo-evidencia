@@ -138,7 +138,9 @@ python scripts/manifesto.py path/to/evidencia_censo --verify MANIFESTO_censo_202
 
 ### Citing it in a methods section
 
-> Each document included in the corpus was captured with the local browser extension *Censo · Evidência* v1.5 (Amorim, 2026), which produces a full-page PDF with retrieval date-time and URL on every page, a text file with metadata and full content, and a manifest with SHA-256 hashes of both files, allowing the integrity of the corpus to be verified. Corpus, manifest and codebook are available at https://github.com/fplamorim/censo-evidencia.
+> Each document included in the corpus was captured with the local browser extension *Censo · Evidência* v1.5 (Amorim, 2026), which produces a full-page PDF with retrieval date-time and URL on every page, a text file with metadata and full content, and a manifest with SHA-256 hashes of both files, allowing the integrity of the corpus to be verified. Corpus, manifest and codebook are available at <URL of the corpus deposit>.
+
+> **Note:** this repository contains the capture instrument only. It does not host any research corpus. Researchers using the tool should deposit their own corpus, manifest and codebook in an appropriate archive (for example Zenodo or OSF) and cite that location.
 
 See `CITATION.cff`.
 
